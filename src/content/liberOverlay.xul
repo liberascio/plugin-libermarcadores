@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
+<?xml-stylesheet type="text/css"
+  href="chrome://libermarcadores/skin/liberToolbar.css" ?>
+
+<!DOCTYPE overlay SYSTEM
+  "chrome://libermarcadores/locale/liberOverlay.dtd">
+
+<overlay id="libermarcadores-browser-overlay"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript"
+    src="chrome://libermarcadores/content/gestionUsuario.js" />
+  <script type="application/x-javascript"
+    src="chrome://libermarcadores/content/liberOverlay.js" />
+  <script type="application/x-javascript"
+    src="chrome://libermarcadores/content/liberSidebar.js" />    
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="libermarcadores-string-bundle"
+      src="chrome://libermarcadores/locale/liberOverlay.properties" />
+  </stringbundleset>
+
+  <toolbarpalette id="BrowserToolbarPalette">
+    <toolbaritem id="libertools" label="LiberTools">
+        <toolbarbutton id="libermarcadores-boton-agregar"
+            class="toolbarbutton-1"
+            label="&libermarcadores.agregar;"
+            tooltiptext="&libermarcadores.marcador.agregar;"
+            oncommand="LiberMarcadores.BrowserOverlay.agregarMarcador(event);"
+         />    
+        <toolbarbutton type="menu" id="libertools-menu">
+          <menupopup id="libertools-menupop">
+               <menuitem label="Abrir Web"
+                oncommand="LiberMarcadores.BrowserOverlay.abrirWebEspacio(event);"/>
+          </menupopup>                  
+       </toolbarbutton>  
+    </toolbaritem>
+  </toolbarpalette>
+  
+  <menupopup id="viewSidebarMenu">
+    <menuitem  
+      key="key_openLiberSidebar" observes="viewLiberSide" />
+  </menupopup>
+              
+  
+  <keyset id="mainKeyset">
+    <key id="key_openLiberSidebar" command="viewLiberSide"
+         key="&openLiberSidebar.commandkey;" 
+         modifiers="&openLiberSidebar.modifierskey;" />
+  </keyset>  
+  
+  <broadcasterset id="mainBroadcasterSet"> 
+    <broadcaster id="viewLiberSide" 
+                 label="LiberMarcadores"
+                 autoCheck="false"
+                 type="checkbox"
+                 group="sidebar"
+                 sidebarurl="chrome://libermarcadores/content/liberSidebar.xul"
+                 sidebartitle="LiberMarcadores"
+                 oncommand="toggleSidebar('viewLiberSide');" />
+  </broadcasterset>  
+ 
+  
+</overlay>

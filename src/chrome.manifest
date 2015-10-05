@@ -1,0 +1,5 @@
+content   libermarcadores                content/
+skin      libermarcadores  classic/1.0   skin/
+locale    libermarcadores  es-AR         locale/es-AR/
+
+overlay chrome://browser/content/browser.xul  chrome://libermarcadores/content/liberOverlay.xul

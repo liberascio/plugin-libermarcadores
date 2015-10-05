@@ -1,0 +1,12 @@
+#libermarcadores-boton-agregar {
+  list-style-image: url("chrome://libermarcadores/skin/agregar.png");
+}
+
+#libertools-menu {
+ list-style-image: url("chrome://libermarcadores/skin/tools.png");
+}
+
+#libertools {
+  width: 16px;
+  height: 16px;
+}

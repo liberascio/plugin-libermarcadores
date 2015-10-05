@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css" ?>
+<?xml-stylesheet href="chrome://browser/skin/browser.css" type="text/css" ?>
+<?xml-stylesheet type="text/css"
+  href="chrome://libermarcadores/skin/liberSidebar.css" ?>
+<!DOCTYPE page SYSTEM "chrome://libermarcadores/locale/liberOverlay.dtd">
+
+<page
+      id="liberSidebar"
+      title="LiberMarcadores"
+      onblur="LiberMarcadores.SideBar.blur(event);"
+      xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  
+    <script type="application/x-javascript"
+     src="chrome://libermarcadores/content/gestionUsuario.js" />
+    <script type="application/x-javascript"
+     src="chrome://libermarcadores/content/liberSidebar.js" />
+    <script type="application/x-javascript"
+     src="chrome://libermarcadores/content/utils.js" />    
+
+  
+    <menupopup id="menumarcador">
+      <menuitem
+        label="Modificar"
+        acceskey="m"
+        oncommand="LiberMarcadores.SideBar.abrirVentanaModificar(event)"/>      
+      <menuitem
+        label="Eliminar"
+        acceskey="e"
+        oncommand="LiberMarcadores.SideBar.eliminarMarcador(event)"/>
+    </menupopup>  
+  
+    <tabbox flex="1">
+      <tabs>
+        <tab label="Marcadores"/>
+        <tab label="Configuración"/>
+      </tabs>
+      <tabpanels id="panels" flex="1">
+        <tabpanel id="tab-marcadores" orient="vertical" flex="1">
+              <hbox style="width:17px;"><button id="butActualizar"
+                oncommand="LiberMarcadores.SideBar.actualizar(true);"/></hbox>
+              <tree id="tree-marcadores" flex="1" seltype="single" class="sidebar-tree">
+                  <treecols orient="horizontal">
+                        <treecol fixed="false" id="col-marcador" label="Titulo" flex="1"/>
+                        <splitter class="tree-splitter"/>
+                        <treecol fixed="false" id="col-url" label="URL" hidden="true" persist="hidden"/>
+                        <splitter class="tree-splitter"/>
+                        <treecol fixed="false" id="col-desc" label="Descripción" hidden="true" persist="hidden"/>
+                        <splitter class="tree-splitter"/>
+                        <treecol fixed="false" id="col-etiquetas" label="Etiquetas" hidden="true" persist="hidden"/>
+                        <splitter class="tree-splitter"/>
+                        <treecol fixed="false" id="col-id" label="Id" hidden="true" persist="hidden"/>                        
+                  </treecols>
+                   <treechildren context="menumarcador" flex="1" ondblclick="LiberMarcadores.SideBar.abrirURL(event)" id="childrens"/>
+              </tree>
+        </tabpanel>
+        <tabpanel id="configuracion" flex="1">
+          <vbox>
+            <label control="usuario" value="Nombre de Usuario:"/>
+            <textbox id="usuario"/>
+            <label control="pass" value="Contraseña:"/>
+            <textbox type="password" id="pass"/>
+            <label control="menu-espacio" value="Espacio por defecto:"/>
+            <textbox id="espacio-defecto" value="liberascio" disabled="true"/>
+            <label control="servidor" value="Servidor:"/>
+            <textbox id="servidor"/>            
+            <separator class="groove-thin"/>
+            <label id="label-cambios" style="display:none" value="Los cambios han sido guardados"/>            
+            <button id="btGuardar"
+                    label="Guardar"
+                    accesskey="G"
+                    oncommand="LiberMarcadores.SideBar.guardarConf(document.getElementById('usuario').value,
+                                                                   document.getElementById('pass').value,
+                                                                   document.getElementById('espacio-defecto').value,
+                                                                   document.getElementById('servidor').value);"/>
+          </vbox>
+        </tabpanel>
+      </tabpanels>
+    </tabbox>
+
+  <script type="application/x-javascript">
+      let usuario = getLiberUsuario();
+      let servidor = getServidor();
+      if (usuario)
+        document.getElementById('usuario').value = usuario;
+      if (servidor)
+        document.getElementById('servidor').value = servidor;
+      LiberMarcadores.SideBar.actualizar(false);  
+  </script>
+  
+</page>

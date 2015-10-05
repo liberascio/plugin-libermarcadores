@@ -1,0 +1,8 @@
+<!ENTITY libermarcadores.agregar    "Agregar LiberMarcador">
+<!ENTITY libermarcadores.marcador.agregar    "Agregar LiberMarcador">
+<!ENTITY libermarcadores.abrir    "Acceder LiberMarcadores">
+<!ENTITY libermarcadores.marcador.abrir    "Web LiberMarcador">
+<!ENTITY libermarcadores.toolbarName.label    "LiberMarcadores">
+<!ENTITY libermarcadores.toolbar.accesskey    "b">
+<!ENTITY openLiberSidebar.commandkey "l">
+<!ENTITY openLiberSidebar.modifierskey "accel shift">

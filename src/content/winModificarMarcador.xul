@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<?xml-stylesheet type="text/css"
+  href="chrome://libermarcadores/skin/winModificarMarcador.css" ?>
+
+<window
+    id="modificar-window"
+    title="Modificar LiberMarcador"
+    orient="vertical"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  
+    <script type="application/x-javascript"
+     src="chrome://libermarcadores/content/utils.js" />  
+
+  <label control="titulo" value="Título"/>
+  <textbox id="titulo"/>
+  <label control="descripcion" value="Descripción"/>
+  <textbox id="descripcion"  multiline="true"/>  
+  <label control="etiquetas" value="Etiquetas"/>
+  <textbox id="etiquetas"/>
+  <button id="btAceptar"
+          label="Aceptar"
+          accesskey="a"
+          oncommand="enviarModificaciones();close();"/>
+  <button id="btCancelar"
+          label="Cancelar"
+          accesskey="a"
+          oncommand="close();"/>  
+  <script>
+        let marcador = window.arguments[0];
+        document.getElementById('titulo').value = marcador.titulo;
+        document.getElementById('descripcion').value = marcador.descripcion;
+        document.getElementById('etiquetas').value = marcador.etiquetas;
+        
+        function enviarModificaciones() {
+          let marcadorNuevo = {};
+          var tags = document.getElementById('etiquetas').value;
+          marcadorNuevo.tags = LiberUtils.getTagsArray(tags);
+          marcadorNuevo.titulo = document.getElementById('titulo').value;
+          marcadorNuevo.descripcion = document.getElementById('descripcion').value;
+          marcadorNuevo.id = marcador.id;
+          marcadorNuevo.url = marcador.url;
+          opener.LiberMarcadores.SideBar.modificarMarcador(marcadorNuevo);
+        }
+  </script>
+</window>
