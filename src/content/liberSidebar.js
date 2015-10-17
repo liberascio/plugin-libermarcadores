@@ -29,7 +29,9 @@ LiberMarcadores.SideBar = {
       
       //Cargo los marcadores en el arbol
       request.onload = function(aEvent) {
-          let marcadores = JSON.parse(aEvent.target.responseText);
+          window.top.getBrowser().selectedBrowser.contentWindow.console.log(aEvent.target.responseText);
+          let objResult = JSON.parse(aEvent.target.responseText);
+          let marcadores = objResult.result;
           marcadores.forEach(function(marcador) {              
             let item = document.createElement('treeitem');                    
             let row = document.createElement('treerow');
@@ -68,6 +70,7 @@ LiberMarcadores.SideBar = {
         window.top.getBrowser().selectedBrowser.contentWindow.console.log(aEvent);
       };
        
+      window.top.getBrowser().selectedBrowser.contentWindow.console.log(urlMarcadores, true, usuarioActual ,pass);
        //Solicito los marcadores, con un GET
       request.open("GET", urlMarcadores, true, usuarioActual ,pass);
       request.setRequestHeader("Content-type", "application/json;charset=UTF-8");
@@ -115,7 +118,6 @@ LiberMarcadores.SideBar = {
       request.onload = function(aEvent) {
         //Muestro en consola los detalles del exito
         LiberMarcadores.SideBar.actualizar();
-        window.top.getBrowser().selectedBrowser.contentWindow.console.log("Exito: " + aEvent.target.responseText);
       };
       
       request.onerror = function(aEvent) {

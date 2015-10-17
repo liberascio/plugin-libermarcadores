@@ -45,6 +45,7 @@ LiberMarcadores.BrowserOverlay = {
        window.alert("Error: compruebe su conexión y vuelva a intentar");
        window.top.getBrowser().selectedBrowser.contentWindow.console.log(aEvent);
     };
+    
 
      //Guardo el marcador, usando el usuario guardado en la configuracion
     request.open("POST", urlServidor, true, usuarioActual ,pass);
