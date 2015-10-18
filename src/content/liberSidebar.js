@@ -20,7 +20,7 @@ LiberMarcadores.SideBar = {
       let usuarioActual = getLiberUsuario();
       let pass = getPass(usuarioActual);
       
-      let urlMarcadores = servidor + "/libermarcadores/rest/" + espacioDefecto + "/marcadores";
+      let urlMarcadores = servidor + "/libermarcadores/rest/espacios/" + espacioDefecto + "/marcadores";
       let request = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"]
                     .createInstance(Components.interfaces.nsIXMLHttpRequest);
                     
@@ -111,7 +111,7 @@ LiberMarcadores.SideBar = {
       let usuarioActual = getLiberUsuario();
       let pass = getPass(usuarioActual);
       
-      let urlMarcadores = servidor + "/libermarcadores/rest/" + espacioDefecto + "/marcadores";
+      let urlMarcadores = servidor + "/libermarcadores/rest/espacios/" + espacioDefecto + "/marcadores";
       let request = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"]
                     .createInstance(Components.interfaces.nsIXMLHttpRequest);      
       
@@ -141,7 +141,7 @@ LiberMarcadores.SideBar = {
       let usuarioActual = getLiberUsuario();
       let pass = getPass(usuarioActual);
       
-      let urlMarcadores = servidor + "/libermarcadores/rest/" + espacioDefecto + "/marcadores";
+      let urlMarcadores = servidor + "/libermarcadores/rest/espacios/" + espacioDefecto + "/marcadores";
       let request = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"]
                     .createInstance(Components.interfaces.nsIXMLHttpRequest);      
       let tree = document.getElementById('tree-marcadores');

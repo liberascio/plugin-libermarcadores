@@ -26,7 +26,7 @@ LiberMarcadores.BrowserOverlay = {
     if (titleDOM.length>0) 
       title = titleDOM[0].text;
   
-    let urlServidor = servidor + "/libermarcadores/rest/" + espacio + "/marcadores";
+    let urlServidor = servidor + "/libermarcadores/rest/espacios/" + espacio + "/marcadores";
     let request = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"]
                   .createInstance(Components.interfaces.nsIXMLHttpRequest);
     request.onload = function(aEvent) {
